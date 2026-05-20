@@ -1,7 +1,16 @@
-export default function Skeleton({ className = "" }: { className?: string }) {
+import React from "react";
+
+export default function Skeleton({
+  className = "",
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   return (
     <div
       className={`animate-pulse bg-slate-800 rounded-lg ${className}`}
+      style={style}
       aria-hidden="true"
     />
   );
@@ -14,13 +23,16 @@ export function ChartSkeleton() {
         <Skeleton className="h-5 w-40" />
         <Skeleton className="h-8 w-24 rounded-xl" />
       </div>
+
       <div className="card-body space-y-3">
         <div className="flex items-end gap-3 h-52">
           {Array.from({ length: 12 }).map((_, i) => (
             <Skeleton
               key={i}
               className="flex-1"
-              style={{ height: `${30 + Math.random() * 70}%` } as React.CSSProperties}
+              style={{
+                height: `${30 + Math.random() * 70}%`,
+              }}
             />
           ))}
         </div>
@@ -36,6 +48,7 @@ export function StatsSkeleton() {
         <div key={i} className="card card-body">
           <div className="flex items-start justify-between gap-4">
             <Skeleton className="w-12 h-12 rounded-xl" />
+
             <div className="flex-1 space-y-2">
               <Skeleton className="h-3 w-24" />
               <Skeleton className="h-7 w-32" />
